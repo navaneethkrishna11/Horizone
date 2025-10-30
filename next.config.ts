@@ -1,7 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+   images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'loremflickr.com', // MockAPI uses this
+      },
+      {
+        protocol: 'https',
+        hostname: '**.mockapi.io',
+      },
+    
+    ],
+  },
 };
 
 export default nextConfig;
+
+
