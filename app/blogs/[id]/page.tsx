@@ -1,5 +1,3 @@
-import BlogCard from '../../_components/BlogCard';
-
 interface BlogData {
   id: string;
   heading: string;
@@ -15,31 +13,30 @@ interface PageProps {
 }
 
 export default async function BlogPage({ params }: PageProps) {
-  const { id } = params;
+  const { id } = await params;
+  // console.log('Fetching blog with ID:', id);
 
   const res = await fetch(`https://69034a75d0f10a340b238871.mockapi.io/api/blog-data/1/${id}`, {
-    // Next.js caching policy, adjust as needed
     next: { revalidate: 60 },
   });
 
   if (!res.ok) {
-    // Handle error if blog not found or fetch failed
-    return <p>Failed to load blog post.</p>;
+    return <p className="text-center text-red-600 p-4">Failed to load blog post.</p>;
   }
 
   const blogData: BlogData = await res.json();
 
   return (
-    <main className="p-4">
-      <BlogCard
-        id={blogData.id}
-        heading={blogData.heading}
-        para={blogData.para}
-        avatar={blogData.avatar}
-        productimg={blogData.productimg}
-        createdAt={blogData.createdAt}
-        createdTime={blogData.createdTime}
-      />
+    <main className="min-h-screen flex items-center justify-center p-4 bg-gray-50">
+      <div className="max-w-2xl w-full bg-white rounded-lg shadow-md p-8">
+        <h1 className="text-3xl font-bold text-black mb-4">
+     
+          {blogData.heading}
+        </h1>
+        <p className="text-gray-700 text-base leading-relaxed">
+          {blogData.para}
+        </p>
+      </div>
     </main>
   );
 }

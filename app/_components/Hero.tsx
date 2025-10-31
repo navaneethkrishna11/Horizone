@@ -21,7 +21,7 @@ export default function HeroSection() {
      {/* Left Side -  Info */}
       <div className="relative z-10 h-full flex flex-col justify-between p-8 md:p-12 lg:p-10">
         <div className="mt-auto max-w-2xl">
-          <button className="mb-6 px-6 py-2 bg-blur backdrop-blur-lg border border-transparent rounded-xl text-white text-sm font-medium">
+          <button className="mb-6 px-6 py-2 bg-[#717475] backdrop-blur-lg border border-transparent rounded-4xl text-white text-sm font-medium">
             Destination
           </button>
           <h1 className="text-white text-4xl md:text-5xl lg:text-4xl leading-tight mb-4">

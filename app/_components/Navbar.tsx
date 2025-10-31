@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import SearchBar from './SearchBar';
 
 export default function Navbar() {
   return (
@@ -41,32 +42,19 @@ export default function Navbar() {
           </div>
 
           {/* Search Bar */}
-          <div className="hidden md:flex flex-1 max-w-md mx-8">
-            <div className="relative w-full">
-              <input
-                type="search"
-                placeholder="Search destination..."
-                aria-label="Search"
-                className=" px-4 py-2 pl-16 ml-6 bg-white/10 backdrop-blur-sm rounded-lg text-whit"
-              />
-              <svg
-                className="absolute left-10 top-1/2 -translate-y-1/2 w-4 h-4 text-white/60"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
+           <div className="hidden md:flex flex-1 max-w-md mx-8">
+            <SearchBar/>
           </div>
-
-          {/* Right Side: Language, Login, Signup */}
+          
+         {/* Right Side*/}
           <div className="flex items-center space-x-4">
             <button
-              className="text-white hover:text-gray-200 transition-colors text-sm font-medium"
+              className="flex items-center text-white hover:text-gray-200 transition-colors text-sm font-medium"
               aria-label="Change language to English"
             >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 2a10 10 0 100 20 10 10 0 000-20zM2 12h20M12 2a15.3 15.3 0 010 20M12 2c3.87 8.19 7.74 8.19 11.61 0M12 22c-3.87-8.19-7.74-8.19-11.61 0" />
+              </svg>
               EN
             </button>
             <Link

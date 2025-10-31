@@ -1,7 +1,6 @@
 import ProductCard from './BlogCard';
 import Link from 'next/link';
 
-// Types matching your API structure
 interface BlogData {
   id: string;
   createdAt: number;
@@ -10,9 +9,10 @@ interface BlogData {
   createdTime: number;
   para: string;
   productimg: string;
+  authorname:string;
+  style:string;
 }
 
-// Server-side data fetching
 async function getBlogs(): Promise<BlogData[]> {
   try {
     const res = await fetch(
@@ -47,10 +47,7 @@ export default async function BlogListingPage() {
           <p className="text-gray-700 text-sm mb-6">
             Here, we share travel tips, destination guides, and stories that inspire your next adventure.
           </p>
-
-          {/* Tags and Sort By Row */}
           <div className="flex items-center justify-between flex-wrap gap-4">
-            {/* Tags */}
             <div className="flex items-center gap-3 flex-wrap">
               {tags.map((tag) => (
                 <button
@@ -91,8 +88,7 @@ export default async function BlogListingPage() {
             {blogs.slice(0, 9).map((blog) => (
               <Link 
                 key={blog.id} 
-                href={`/blogs/${blog.id}`} 
-                className="block hover:opacity-90 transition-opacity"
+                href={`/blogs/${blog.id}`}
               >
                 <ProductCard
                   id={blog.id}
@@ -102,6 +98,8 @@ export default async function BlogListingPage() {
                   productimg={blog.productimg}
                   createdAt={blog.createdAt}
                   createdTime={blog.createdTime}
+                  authorname={blog.authorname}
+                  style={blog.style}
                 />
               </Link>
             ))}
@@ -115,6 +113,15 @@ export default async function BlogListingPage() {
         {/* Pagination */}
         <nav aria-label="Pagination" className="flex justify-center">
           <ul className="flex items-center gap-2">
+            <li>
+              <button
+                className="w-10 h-10 flex items-center justify-center rounded-lg text-sm font-medium transition-colors text-black hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-label="Previous page"
+                disabled
+              >
+                ←
+              </button>
+            </li>
             {[1, 2, 3, 4, 5].map((page) => (
               <li key={page}>
                 <button
@@ -130,6 +137,14 @@ export default async function BlogListingPage() {
                 </button>
               </li>
             ))}
+            <li>
+              <button
+                className="w-10 h-10 flex items-center justify-center rounded-lg text-sm font-medium transition-colors text-black hover:bg-gray-100"
+                aria-label="Next page"
+              >
+                →
+              </button>
+            </li>
           </ul>
         </nav>
       </div>
