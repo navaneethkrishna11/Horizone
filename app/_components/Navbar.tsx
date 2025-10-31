@@ -11,7 +11,7 @@ export default function Navbar() {
           <div className="flex items-center space-x-2">
             <Link href="" aria-label="Home" className="flex items-center">
               <Image
-                src="/images/h.png"
+                src="/images/H.png"
                 alt="Horizon Logo"
                 width={120}
                 height={40}
