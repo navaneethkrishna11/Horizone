@@ -8,17 +8,17 @@ export default function Navbar() {
       <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-9">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="" aria-label="Home">
-              {/* <Image
-                src="/images/vercel.svg"
+          <div className="flex items-center space-x-2">
+            <Link href="" aria-label="Home" className="flex items-center">
+              <Image
+                src="/images/h.png"
                 alt="Horizon Logo"
                 width={120}
                 height={40}
                 priority
                 className="h-10 w-auto"
-              /> */}
-              Horizone
+              />
+              <span className="ml-2 font-semibold text-lg">Horizone</span>
             </Link>
           </div>
 
@@ -45,7 +45,7 @@ export default function Navbar() {
            <div className="hidden md:flex flex-1 max-w-md mx-8">
             <SearchBar/>
           </div>
-          
+
          {/* Right Side*/}
           <div className="flex items-center space-x-4">
             <button

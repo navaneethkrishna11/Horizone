@@ -6,7 +6,7 @@ export default function HeroSection() {
     <section className="relative m-2 h-screen overflow-hidden rounded">
       <div className="absolute inset-0 rounded">
         <Image
-          src="/images/b.jpg"
+          src="/images/b1.webp"
           alt="Hero background showcasing travel destination"
           fill
           priority
