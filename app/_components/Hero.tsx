@@ -3,7 +3,7 @@ import Navbar from './Navbar';
 
 export default function HeroSection() {
   return (
-    <section className="relative m-2 h-screen overflow-hidden rounded">
+    <section className="relative m-2 h-screen overflow-hidden rounded-xl">
       <div className="absolute inset-0 rounded">
         <Image
           src="/images/b1.webp"
