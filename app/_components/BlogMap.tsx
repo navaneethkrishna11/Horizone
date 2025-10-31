@@ -1,25 +1,24 @@
-import ProductCard from '../_components/ProductCard';
+import ProductCard from './BlogCard';
 import Link from 'next/link';
 
-// Types
+// Types matching your API structure
 interface BlogData {
   id: string;
-  image: string;
-  imageAlt: string;
-  label: string;
-  date: string;
-  time: string;
-  title: string;
-  description: string;
+  createdAt: number;
+  heading: string;
+  avatar: string;
+  createdTime: number;
+  para: string;
+  productimg: string;
 }
 
 // Server-side data fetching
 async function getBlogs(): Promise<BlogData[]> {
   try {
     const res = await fetch(
-      'https://69034a75d0f10a340b238871.mockapi.io/api/blog-data',
+      'https://69034a75d0f10a340b238871.mockapi.io/api/blog-data/1',
       {
-        cache: 'no-store', // Always fetch fresh data
+        cache: 'no-store',
       }
     );
     
@@ -36,7 +35,7 @@ async function getBlogs(): Promise<BlogData[]> {
 
 const tags = ['All', 'Travel', 'Technology', 'Food', 'Lifestyle', 'Adventure'];
 
-export default async function BlogsPage() {
+export default async function BlogListingPage() {
   const blogs = await getBlogs();
 
   return (
@@ -67,7 +66,7 @@ export default async function BlogsPage() {
               ))}
             </div>
 
-            {/* Sort By Dropdown */}
+            {/* Sort By */}
             <div className="flex items-center gap-2">
               <label htmlFor="sort-by" className="text-black text-sm font-medium">
                 Sort by:
@@ -86,7 +85,7 @@ export default async function BlogsPage() {
           </div>
         </div>
 
-        {/* Blog Grid - 3x3 */}
+        {/* Blog Grid */}
         {blogs && blogs.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {blogs.slice(0, 9).map((blog) => (
@@ -96,13 +95,13 @@ export default async function BlogsPage() {
                 className="block hover:opacity-90 transition-opacity"
               >
                 <ProductCard
-                  image={blog.image}
-                  imageAlt={blog.imageAlt}
-                  label={blog.label}
-                  date={blog.date}
-                  time={blog.time}
-                  title={blog.title}
-                  description={blog.description}
+                  id={blog.id}
+                  heading={blog.heading}
+                  para={blog.para}
+                  avatar={blog.avatar}
+                  productimg={blog.productimg}
+                  createdAt={blog.createdAt}
+                  createdTime={blog.createdTime}
                 />
               </Link>
             ))}
